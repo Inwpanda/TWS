@@ -1069,21 +1069,6 @@
         });
         bounds_group.addLayer(layer_PMASurfaceCourse_12);
         map.addLayer(layer_PMASurfaceCourse_12);
-            var abstract = new L.Control({'position':'bottomright'});
-            abstract.onAdd = function (map) {
-                this._div = L.DomUtil.create('div',
-                'leaflet-control abstract');
-                this._div.id = 'abstract'
-
-                    abstract.show();
-                    return this._div;
-                };
-                abstract.show = function () {
-                    this._div.classList.remove("abstract");
-                    this._div.classList.add("abstractUncollapsed");
-                    this._div.innerHTML = 'Construction management web map';
-            };
-            abstract.addTo(map);
         var osmGeocoder = new L.Control.Geocoder({
             collapsed: true,
             position: 'topleft',
