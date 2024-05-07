@@ -1124,7 +1124,7 @@
         document.getElementById("all").appendChild(col1);
         document.getElementById("all").appendChild(col2);
         col1.appendChild(mapDiv)
-        var Filters = {"F.Date": "date","RIT Number": "str"};
+        var Filters = {"F.Date": "date","RIT Number": "str","Zone": "str","Area": "str","Package": "str","Status": "str"};
         function filterFunc() {
           map.eachLayer(function(lyr){
           if ("options" in lyr && "dataVar" in lyr["options"]){
@@ -1383,6 +1383,135 @@
                 filterFunc();
             };
             div_RITNumber.appendChild(reset_RITNumber);
+            document.getElementById("menu").appendChild(
+                document.createElement("div"));
+            var div_Zone = document.createElement('div');
+            div_Zone.id = "div_Zone";
+            div_Zone.className= "filterselect";
+            document.getElementById("menu").appendChild(div_Zone);
+            sel_Zone = document.createElement('select');
+            sel_Zone.multiple = true;
+            sel_Zone.size = 3;
+            sel_Zone.id = "sel_Zone";
+            var Zone_options_str = "<option value='' unselected></option>";
+            sel_Zone.onchange = function(){filterFunc()};
+            Zone_options_str  += '<option value="Block J">Block J</option>';
+            Zone_options_str  += '<option value="Block K">Block K</option>';
+            Zone_options_str  += '<option value="Block L">Block L</option>';
+            sel_Zone.innerHTML = Zone_options_str;
+            div_Zone.appendChild(sel_Zone);
+            var lab_Zone = document.createElement('div');
+            lab_Zone.innerHTML = 'Zone';
+            lab_Zone.className = 'filterlabel';
+            div_Zone.appendChild(lab_Zone);
+            var reset_Zone = document.createElement('div');
+            reset_Zone.innerHTML = 'clear filter';
+            reset_Zone.className = 'filterlabel';
+            reset_Zone.onclick = function() {
+                var options = document.getElementById("sel_Zone").options;
+                for (var i=0; i < options.length; i++) {
+                    options[i].selected = false;
+                }
+                filterFunc();
+            };
+            div_Zone.appendChild(reset_Zone);
+            document.getElementById("menu").appendChild(
+                document.createElement("div"));
+            var div_Area = document.createElement('div');
+            div_Area.id = "div_Area";
+            div_Area.className= "filterselect";
+            document.getElementById("menu").appendChild(div_Area);
+            sel_Area = document.createElement('select');
+            sel_Area.multiple = true;
+            sel_Area.size = 4;
+            sel_Area.id = "sel_Area";
+            var Area_options_str = "<option value='' unselected></option>";
+            sel_Area.onchange = function(){filterFunc()};
+            Area_options_str  += '<option value="D Extansion">D Extansion</option>';
+            Area_options_str  += '<option value="D Extension">D Extension</option>';
+            Area_options_str  += '<option value="D14 Shoulder">D14 Shoulder</option>';
+            Area_options_str  += '<option value="D14-D15 Shoulder">D14-D15 Shoulder</option>';
+            sel_Area.innerHTML = Area_options_str;
+            div_Area.appendChild(sel_Area);
+            var lab_Area = document.createElement('div');
+            lab_Area.innerHTML = 'Area';
+            lab_Area.className = 'filterlabel';
+            div_Area.appendChild(lab_Area);
+            var reset_Area = document.createElement('div');
+            reset_Area.innerHTML = 'clear filter';
+            reset_Area.className = 'filterlabel';
+            reset_Area.onclick = function() {
+                var options = document.getElementById("sel_Area").options;
+                for (var i=0; i < options.length; i++) {
+                    options[i].selected = false;
+                }
+                filterFunc();
+            };
+            div_Area.appendChild(reset_Area);
+            document.getElementById("menu").appendChild(
+                document.createElement("div"));
+            var div_Package = document.createElement('div');
+            div_Package.id = "div_Package";
+            div_Package.className= "filterselect";
+            document.getElementById("menu").appendChild(div_Package);
+            sel_Package = document.createElement('select');
+            sel_Package.multiple = true;
+            sel_Package.size = 1;
+            sel_Package.id = "sel_Package";
+            var Package_options_str = "<option value='' unselected></option>";
+            sel_Package.onchange = function(){filterFunc()};
+            Package_options_str  += '<option value="B">B</option>';
+            sel_Package.innerHTML = Package_options_str;
+            div_Package.appendChild(sel_Package);
+            var lab_Package = document.createElement('div');
+            lab_Package.innerHTML = 'Package';
+            lab_Package.className = 'filterlabel';
+            div_Package.appendChild(lab_Package);
+            var reset_Package = document.createElement('div');
+            reset_Package.innerHTML = 'clear filter';
+            reset_Package.className = 'filterlabel';
+            reset_Package.onclick = function() {
+                var options = document.getElementById("sel_Package").options;
+                for (var i=0; i < options.length; i++) {
+                    options[i].selected = false;
+                }
+                filterFunc();
+            };
+            div_Package.appendChild(reset_Package);
+            document.getElementById("menu").appendChild(
+                document.createElement("div"));
+            var div_Status = document.createElement('div');
+            div_Status.id = "div_Status";
+            div_Status.className= "filterselect";
+            document.getElementById("menu").appendChild(div_Status);
+            sel_Status = document.createElement('select');
+            sel_Status.multiple = true;
+            sel_Status.size = 5;
+            sel_Status.id = "sel_Status";
+            var Status_options_str = "<option value='' unselected></option>";
+            sel_Status.onchange = function(){filterFunc()};
+            Status_options_str  += '<option value="NULL">NULL</option>';
+            Status_options_str  += '<option value="Already Cl">Already Cl</option>';
+            Status_options_str  += '<option value="Already Claim">Already Claim</option>';
+            Status_options_str  += '<option value="Panding Doc.">Panding Doc.</option>';
+            Status_options_str  += '<option value="Under Review">Under Review</option>';
+            sel_Status.innerHTML = Status_options_str;
+            div_Status.appendChild(sel_Status);
+            var lab_Status = document.createElement('div');
+            lab_Status.innerHTML = 'Status';
+            lab_Status.className = 'filterlabel';
+            div_Status.appendChild(lab_Status);
+            var reset_Status = document.createElement('div');
+            reset_Status.innerHTML = 'clear filter';
+            reset_Status.className = 'filterlabel';
+            reset_Status.onclick = function() {
+                var options = document.getElementById("sel_Status").options;
+                for (var i=0; i < options.length; i++) {
+                    options[i].selected = false;
+                }
+                filterFunc();
+            };
+            div_Status.appendChild(reset_Status);
         </script>
     </body>
 </html>
