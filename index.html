@@ -53,7 +53,7 @@
         <script src="data/BaseCourseLayer3_8.js"></script>
         <script src="data/BaseCourseLayer4_9.js"></script>
         <script src="data/HMABinderCourse_10.js"></script>
-        <script src="data/PMASurfaceCourse_11.js"></script>
+        <script src="data/HMASurfaceCourse_11.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -1023,7 +1023,7 @@
         });
         bounds_group.addLayer(layer_HMABinderCourse_10);
         map.addLayer(layer_HMABinderCourse_10);
-        function pop_PMASurfaceCourse_11(feature, layer) {
+        function pop_HMASurfaceCourse_11(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -1098,9 +1098,9 @@
             popup.setContent(updatedContent);
         }
 
-        function style_PMASurfaceCourse_11_0() {
+        function style_HMASurfaceCourse_11_0() {
             return {
-                pane: 'pane_PMASurfaceCourse_11',
+                pane: 'pane_HMASurfaceCourse_11',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -1113,20 +1113,20 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_PMASurfaceCourse_11');
-        map.getPane('pane_PMASurfaceCourse_11').style.zIndex = 411;
-        map.getPane('pane_PMASurfaceCourse_11').style['mix-blend-mode'] = 'normal';
-        var layer_PMASurfaceCourse_11 = new L.geoJson(json_PMASurfaceCourse_11, {
+        map.createPane('pane_HMASurfaceCourse_11');
+        map.getPane('pane_HMASurfaceCourse_11').style.zIndex = 411;
+        map.getPane('pane_HMASurfaceCourse_11').style['mix-blend-mode'] = 'normal';
+        var layer_HMASurfaceCourse_11 = new L.geoJson(json_HMASurfaceCourse_11, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_PMASurfaceCourse_11',
-            layerName: 'layer_PMASurfaceCourse_11',
-            pane: 'pane_PMASurfaceCourse_11',
-            onEachFeature: pop_PMASurfaceCourse_11,
-            style: style_PMASurfaceCourse_11_0,
+            dataVar: 'json_HMASurfaceCourse_11',
+            layerName: 'layer_HMASurfaceCourse_11',
+            pane: 'pane_HMASurfaceCourse_11',
+            onEachFeature: pop_HMASurfaceCourse_11,
+            style: style_HMASurfaceCourse_11_0,
         });
-        bounds_group.addLayer(layer_PMASurfaceCourse_11);
-        map.addLayer(layer_PMASurfaceCourse_11);
+        bounds_group.addLayer(layer_HMASurfaceCourse_11);
+        map.addLayer(layer_HMASurfaceCourse_11);
         var osmGeocoder = new L.Control.Geocoder({
             collapsed: true,
             position: 'topleft',
@@ -1139,7 +1139,7 @@
         .title += 'Search for a place';
         var baseMaps = {};
         var overlaysTree = [
-            {label: '<img src="legend/PMASurfaceCourse_11.png" /> PMA Surface Course', layer: layer_PMASurfaceCourse_11},
+            {label: '<img src="legend/HMASurfaceCourse_11.png" /> HMA Surface Course', layer: layer_HMASurfaceCourse_11},
             {label: '<img src="legend/HMABinderCourse_10.png" /> HMA Binder Course', layer: layer_HMABinderCourse_10},
             {label: '<img src="legend/BaseCourseLayer4_9.png" /> Base Course Layer4', layer: layer_BaseCourseLayer4_9},
             {label: '<img src="legend/BaseCourseLayer3_8.png" /> Base Course Layer3', layer: layer_BaseCourseLayer3_8},
@@ -1181,7 +1181,7 @@
         document.getElementById("all").appendChild(col1);
         document.getElementById("all").appendChild(col2);
         col1.appendChild(mapDiv)
-        var Filters = {"F.Date": "date","Status": "str","RIT Number": "str"};
+        var Filters = {"F.Date": "date","RIT Number": "str","Status": "str","Item": "str","Package": "str"};
         function filterFunc() {
           map.eachLayer(function(lyr){
           if ("options" in lyr && "dataVar" in lyr["options"]){
@@ -1372,48 +1372,6 @@
                 reset_FDate_date2);
             document.getElementById("menu").appendChild(
                 document.createElement("div"));
-            var div_Status = document.createElement('div');
-            div_Status.id = "div_Status";
-            div_Status.className= "filterselect";
-            document.getElementById("menu").appendChild(div_Status);
-            sel_Status = document.createElement('select');
-            sel_Status.multiple = true;
-            sel_Status.size = 10;
-            sel_Status.id = "sel_Status";
-            var Status_options_str = "<option value='' unselected></option>";
-            sel_Status.onchange = function(){filterFunc()};
-            Status_options_str  += '<option value="NULL">NULL</option>';
-            Status_options_str  += '<option value="AEC Sign">AEC Sign</option>';
-            Status_options_str  += '<option value="Already Cl">Already Cl</option>';
-            Status_options_str  += '<option value="Already Claim">Already Claim</option>';
-            Status_options_str  += '<option value="Already Cliam">Already Cliam</option>';
-            Status_options_str  += '<option value="Already cl">Already cl</option>';
-            Status_options_str  += '<option value="Panding Doc.">Panding Doc.</option>';
-            Status_options_str  += '<option value="Pending D">Pending D</option>';
-            Status_options_str  += '<option value="Pending Doc">Pending Doc</option>';
-            Status_options_str  += '<option value="Ready">Ready</option>';
-            Status_options_str  += '<option value="Ready to Claim">Ready to Claim</option>';
-            Status_options_str  += '<option value="Recieved">Recieved</option>';
-            Status_options_str  += '<option value="Under Review">Under Review</option>';
-            sel_Status.innerHTML = Status_options_str;
-            div_Status.appendChild(sel_Status);
-            var lab_Status = document.createElement('div');
-            lab_Status.innerHTML = 'Status';
-            lab_Status.className = 'filterlabel';
-            div_Status.appendChild(lab_Status);
-            var reset_Status = document.createElement('div');
-            reset_Status.innerHTML = 'clear filter';
-            reset_Status.className = 'filterlabel';
-            reset_Status.onclick = function() {
-                var options = document.getElementById("sel_Status").options;
-                for (var i=0; i < options.length; i++) {
-                    options[i].selected = false;
-                }
-                filterFunc();
-            };
-            div_Status.appendChild(reset_Status);
-            document.getElementById("menu").appendChild(
-                document.createElement("div"));
             var div_RITNumber = document.createElement('div');
             div_RITNumber.id = "div_RITNumber";
             div_RITNumber.className= "filterselect";
@@ -1558,6 +1516,102 @@
                 filterFunc();
             };
             div_RITNumber.appendChild(reset_RITNumber);
+            document.getElementById("menu").appendChild(
+                document.createElement("div"));
+            var div_Status = document.createElement('div');
+            div_Status.id = "div_Status";
+            div_Status.className= "filterselect";
+            document.getElementById("menu").appendChild(div_Status);
+            sel_Status = document.createElement('select');
+            sel_Status.multiple = true;
+            sel_Status.size = 6;
+            sel_Status.id = "sel_Status";
+            var Status_options_str = "<option value='' unselected></option>";
+            sel_Status.onchange = function(){filterFunc()};
+            Status_options_str  += '<option value="AEC Sign">AEC Sign</option>';
+            Status_options_str  += '<option value="Already C.">Already C.</option>';
+            Status_options_str  += '<option value="Pending D.">Pending D.</option>';
+            Status_options_str  += '<option value="Ready C.">Ready C.</option>';
+            Status_options_str  += '<option value="Received">Received</option>';
+            Status_options_str  += '<option value="Under R.">Under R.</option>';
+            sel_Status.innerHTML = Status_options_str;
+            div_Status.appendChild(sel_Status);
+            var lab_Status = document.createElement('div');
+            lab_Status.innerHTML = 'Status';
+            lab_Status.className = 'filterlabel';
+            div_Status.appendChild(lab_Status);
+            var reset_Status = document.createElement('div');
+            reset_Status.innerHTML = 'clear filter';
+            reset_Status.className = 'filterlabel';
+            reset_Status.onclick = function() {
+                var options = document.getElementById("sel_Status").options;
+                for (var i=0; i < options.length; i++) {
+                    options[i].selected = false;
+                }
+                filterFunc();
+            };
+            div_Status.appendChild(reset_Status);
+            document.getElementById("menu").appendChild(
+                document.createElement("div"));
+            var div_Item = document.createElement('div');
+            div_Item.id = "div_Item";
+            div_Item.className= "filterselect";
+            document.getElementById("menu").appendChild(div_Item);
+            sel_Item = document.createElement('select');
+            sel_Item.multiple = true;
+            sel_Item.size = 1;
+            sel_Item.id = "sel_Item";
+            var Item_options_str = "<option value='' unselected></option>";
+            sel_Item.onchange = function(){filterFunc()};
+            Item_options_str  += '<option value="Taxiway">Taxiway</option>';
+            sel_Item.innerHTML = Item_options_str;
+            div_Item.appendChild(sel_Item);
+            var lab_Item = document.createElement('div');
+            lab_Item.innerHTML = 'Item';
+            lab_Item.className = 'filterlabel';
+            div_Item.appendChild(lab_Item);
+            var reset_Item = document.createElement('div');
+            reset_Item.innerHTML = 'clear filter';
+            reset_Item.className = 'filterlabel';
+            reset_Item.onclick = function() {
+                var options = document.getElementById("sel_Item").options;
+                for (var i=0; i < options.length; i++) {
+                    options[i].selected = false;
+                }
+                filterFunc();
+            };
+            div_Item.appendChild(reset_Item);
+            document.getElementById("menu").appendChild(
+                document.createElement("div"));
+            var div_Package = document.createElement('div');
+            div_Package.id = "div_Package";
+            div_Package.className= "filterselect";
+            document.getElementById("menu").appendChild(div_Package);
+            sel_Package = document.createElement('select');
+            sel_Package.multiple = true;
+            sel_Package.size = 2;
+            sel_Package.id = "sel_Package";
+            var Package_options_str = "<option value='' unselected></option>";
+            sel_Package.onchange = function(){filterFunc()};
+            Package_options_str  += '<option value="NULL">NULL</option>';
+            Package_options_str  += '<option value="B">B</option>';
+            sel_Package.innerHTML = Package_options_str;
+            div_Package.appendChild(sel_Package);
+            var lab_Package = document.createElement('div');
+            lab_Package.innerHTML = 'Package';
+            lab_Package.className = 'filterlabel';
+            div_Package.appendChild(lab_Package);
+            var reset_Package = document.createElement('div');
+            reset_Package.innerHTML = 'clear filter';
+            reset_Package.className = 'filterlabel';
+            reset_Package.onclick = function() {
+                var options = document.getElementById("sel_Package").options;
+                for (var i=0; i < options.length; i++) {
+                    options[i].selected = false;
+                }
+                filterFunc();
+            };
+            div_Package.appendChild(reset_Package);
         </script>
     </body>
 </html>
